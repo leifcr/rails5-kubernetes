@@ -18,6 +18,7 @@ RUN apk add --update --no-cache \
   nodejs \
   shadow \
   tzdata \
+  git \
   yarn && \
   rm -rf /var/cache/apk/* && \
   set -x && \
