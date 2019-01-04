@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.6-alpine
 MAINTAINER leifcr@gmail.com
 
 ENV APP_HOME /app
@@ -6,28 +6,23 @@ ENV LANG C.UTF-8
 
 # For stretch:
 # RUN  apt-get install -y apt-transport-https ca-certificates gnupg wget --no-install-recommends && \
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update -q \
-    && apt-get install -y \
-       build-essential \
-       default-libmysqlclient-dev \
+RUN apk add --no-cache --virtual \
+       build-base \
        libxml2-dev \
-       libxslt1-dev \
+       libxslt-dev \
        ghostscript \
-       mysql-client \
+       mariadb-client \
+       mariadb-dev \
        wget \
        curl \
        nodejs \
-       yarn \
-    && rm -rf /var/lib/apt/lists/*
+       yarn
 
 RUN set -x && \
     mkdir $APP_HOME && \
     groupadd -g 1000 rails && \
     useradd -s /bin/bash -m -d /home/rails -g rails rails && \
-    chown rails:rails /app && \
+    chown rails:rails /app &&
 
 # Copy docker entry point
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -45,7 +40,7 @@ WORKDIR $APP_HOME
 # Add Gemfile
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
 # Install gems
-RUN gem install bundler && bundle install --jobs 20 --retry 5 && yarn install
+RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
