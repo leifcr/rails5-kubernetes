@@ -16,13 +16,13 @@ RUN apk add --no-cache --virtual \
        wget \
        curl \
        nodejs \
-       yarn
-
-RUN set -x && \
+       shadow \
+       yarn && \
+    set -x && \
     mkdir $APP_HOME && \
-    groupadd -g 1000 rails && \
-    useradd -s /bin/bash -m -d /home/rails -g rails rails && \
-    chown rails:rails /app &&
+    addgroup -g 1000 rails && \
+    adduser -D -s /bin/sh -u 1000 -h /home/rails -G rails rails && \
+    chown rails:rails /app
 
 # Copy docker entry point
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -38,7 +38,7 @@ USER rails
 WORKDIR $APP_HOME
 
 # Add Gemfile
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 # Install gems
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 
