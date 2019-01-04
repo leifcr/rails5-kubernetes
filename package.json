@@ -1,0 +1,35 @@
+{
+  "name": "rails5-base",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.4.0",
+    "bootstrap": ">= 4.0.0",
+    "caniuse-lite": "^1.0.30000697",
+    "chart.js": "^2.7.3",
+    "clockpicker": "latest",
+    "coffeescript": "^2.2.4",
+    "css-loader": "^0.28.7",
+    "easy-pie-chart": "latest",
+    "exports-loader": "^0.7.0 ",
+    "hammerjs": "latest",
+    "jarallax": "^1.10.6",
+    "jquery": "^3.2.1",
+    "jquery-easing": "^0.0.1",
+    "jquery-sticky": "latest",
+    "jquery.easing": "latest",
+    "moment": "^2.18.1",
+    "node-waves": "latest",
+    "perfect-scrollbar": "^1.4.0",
+    "photoswipe": "latest",
+    "popper.js": "^1.14.6",
+    "script-loader": "^0.7.0",
+    "startbootstrap-scrolling-nav": "^4.1.1",
+    "toastr": "latest",
+    "velocity-animate": "^1.5.2",
+    "webpack": "^4.0.0",
+    "wowjs": "latest"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.0"
+  }
+}
