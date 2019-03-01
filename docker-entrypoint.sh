@@ -7,7 +7,11 @@ case "$1" in
         command="bundle exec $@";;
         spork|spring|strainer|tailor|taps|thin|thor|unicorn|unicorn_rails)
         command="bundle exec $@";;
+        "")
+        command="bundle exec rails server";;
         *)
-        command="$@";;
+        command="bundle exec rails server";;
+        # command="$@";;
 esac
+# echo $command
 exec ${command}
