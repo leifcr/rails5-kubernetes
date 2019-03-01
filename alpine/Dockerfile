@@ -6,23 +6,26 @@ ENV LANG C.UTF-8
 
 # For stretch:
 # RUN  apt-get install -y apt-transport-https ca-certificates gnupg wget --no-install-recommends && \
-RUN apk add --no-cache --virtual \
-       build-base \
-       libxml2-dev \
-       libxslt-dev \
-       ghostscript \
-       mariadb-client \
-       mariadb-dev \
-       wget \
-       curl \
-       nodejs \
-       yarn
-
-RUN set -x && \
-    mkdir $APP_HOME && \
-    groupadd -g 1000 rails && \
-    useradd -s /bin/bash -m -d /home/rails -g rails rails && \
-    chown rails:rails /app &&
+RUN apk add --update --no-cache \
+  mariadb-dev \
+  mariadb-client \
+  libxml2-dev \
+  libxslt-dev \
+  build-base \
+  ghostscript \
+  wget \
+  curl \
+  nodejs \
+  shadow \
+  tzdata \
+  git \
+  yarn && \
+  rm -rf /var/cache/apk/* && \
+  set -x && \
+  mkdir $APP_HOME && \
+  addgroup -g 1000 rails && \
+  adduser -D -s /bin/sh -u 1000 -h /home/rails -G rails rails && \
+  chown rails:rails /app
 
 # Copy docker entry point
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -32,13 +35,13 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh
 
 # Continue as rails user
-USER rails
+# USER rails
 
 # Set workdir to /app, so COPY, ADD, RUN and ENTRYPOINT is run within folder
 WORKDIR $APP_HOME
 
 # Add Gemfile
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 # Install gems
 RUN gem install bundler && bundle install --jobs 20 --retry 5
 

@@ -21,13 +21,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
        curl \
        nodejs \
        yarn \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN set -x && \
+    && rm -rf /var/lib/apt/lists/* && \
+    set -x && \
     mkdir $APP_HOME && \
     groupadd -g 1000 rails && \
     useradd -s /bin/bash -m -d /home/rails -g rails rails && \
-    chown rails:rails /app && \
+    chown rails:rails /app
 
 # Copy docker entry point
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -43,9 +42,9 @@ USER rails
 WORKDIR $APP_HOME
 
 # Add Gemfile
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 # Install gems
-RUN gem install bundler && bundle install --jobs 20 --retry 5 && yarn install
+RUN gem install bundler && bundle install --jobs 20 --retry 5
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]

@@ -6,15 +6,13 @@ gem 'rails', '~> 5.2.0'
 gem 'sprockets'
 gem 'sprockets-es6', require: 'sprockets/es6'
 
-gem 'responders' # See https://github.com/plataformatec/responders
-
 gem 'turbolinks'
 
-# Add after upgrade to rails5
+gem 'mysql2', '~> 0.5.0'
+
 gem 'rails-i18n'
 
-# Might not be needed
-# gem 'quiet_assets'
+gem 'responders' # See https://github.com/plataformatec/responders
 
 # kaminair must be before elasticsearch to work with es
 gem 'kaminari'
@@ -26,10 +24,6 @@ gem 'elasticsearch-dsl' # rubocop:disable Bundler/OrderedGems
 
 # Nice progressbar to use in rake tasks
 gem 'ruby-progressbar', require: false
-
-# Pin to 0.4 for rails 4.x
-# Change to 0.5.x upgrade to rails 5.x
-gem 'mysql2', '~> 0.5.0'
 
 gem 'jbuilder', '~> 2.0'
 
@@ -92,7 +86,6 @@ gem 'uglifier', '>= 1.3.0'
 # uglifier requirement
 gem 'execjs'
 gem 'mini_racer'
-# gem 'therubyracer' # , group: [:development] # execjs/uglifier requirement
 
 # Error Tracking
 gem 'sentry-raven'
