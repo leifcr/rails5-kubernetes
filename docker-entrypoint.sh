@@ -1,7 +1,7 @@
 #!/bin/bash
 # Note: due to gitlab autodevops not setting args to any value, fallback to bundle exec rails server as default
 set -e
-echo $1
+echo "Rails entrypoint running: $1"
 case "$1" in
         /bin/bash|/bin/sh|bash|sh)
         command="$1";;
@@ -16,4 +16,5 @@ case "$1" in
         *)
         command="bundle exec rails server";;
 esac
+echo "Full command $command"
 exec ${command}
