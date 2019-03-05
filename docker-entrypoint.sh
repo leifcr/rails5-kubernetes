@@ -1,6 +1,10 @@
 #!/bin/bash
+# Note: due to gitlab autodevops not setting args to any value, fallback to bundle exec rails server as default
 set -e
+echo $1
 case "$1" in
+        /bin/bash|/bin/sh|bash|sh)
+        command="$1";;
         annotate|cap|capify|cucumber|foodcritic|guard|irb|jekyll|kitchen|knife)
         command="bundle exec $@";;
         middleman|nanoc|pry|puma|rackup|rainbows|rails|rake|rspec|shotgun|sidekiq|spec)
@@ -11,7 +15,5 @@ case "$1" in
         command="bundle exec rails server";;
         *)
         command="bundle exec rails server";;
-        # command="$@";;
 esac
-# echo $command
 exec ${command}
