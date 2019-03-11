@@ -1,5 +1,6 @@
 FROM ruby:2.6
-MAINTAINER leifcr@gmail.com
+LABEL maintainer='leifcr@gmail.com'
+LABEL description='Image for running rails 5 apps on kubernetes, with common gems preinstalled. Based on ruby:2.6 image'
 
 ENV APP_HOME /app
 ENV LANG C.UTF-8
@@ -44,7 +45,7 @@ WORKDIR $APP_HOME
 # Add Gemfile
 COPY Gemfile Gemfile.lock ./
 # Install gems
-RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
