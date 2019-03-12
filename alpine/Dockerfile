@@ -36,15 +36,15 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh
 
 # Continue as rails user
-# USER rails
+USER rails
 
 # Set workdir to /app, so COPY, ADD, RUN and ENTRYPOINT is run within folder
 WORKDIR $APP_HOME
 
 # Add Gemfile
-COPY Gemfile Gemfile.lock ./
+COPY --chown rails:rails Gemfile Gemfile.lock ./
 # Install gems
-RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 --without development:test
+RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 --without development:test --global frozen 1
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
