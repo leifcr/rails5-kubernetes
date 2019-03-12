@@ -7,7 +7,7 @@ ENV LANG C.UTF-8
 
 # For stretch:
 # RUN  apt-get install -y apt-transport-https ca-certificates gnupg wget --no-install-recommends && \
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update -q \
@@ -45,7 +45,7 @@ WORKDIR $APP_HOME
 # Add Gemfile
 COPY --chown=rails:rails Gemfile Gemfile.lock ./
 # Install gems
-RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 --without development:test --global frozen 1
+RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 --without development:test
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
