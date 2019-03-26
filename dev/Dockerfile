@@ -10,6 +10,8 @@ ENV LANG C.UTF-8
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
     && apt-get update -q \
     && apt-get install -y \
        build-essential \
@@ -22,6 +24,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
        curl \
        nodejs \
        yarn \
+    && apt-get install -y google-chrome-stable --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* && \
     set -x && \
     mkdir $APP_HOME && \
@@ -43,9 +46,9 @@ USER rails
 WORKDIR $APP_HOME
 
 # Add Gemfile
-COPY --chown=rails:rails Gemfile Gemfile.lock ./
+COPY --chown=rails:rails Gemfile Gemfile.lock update_webdrivers.rb ./
 # Install gems
-RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5
+RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 && bundle exec ruby update_webdrivers.rb
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
