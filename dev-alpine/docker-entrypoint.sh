@@ -3,6 +3,8 @@
 set -e
 echo "Rails entrypoint running: $1"
 case "$1" in
+        bundle*)
+        command="$1";;
         /bin/bash|/bin/sh|bash|sh)
         command="$1";;
         annotate|cap|capify|cucumber|foodcritic|guard|irb|jekyll|kitchen|knife)
