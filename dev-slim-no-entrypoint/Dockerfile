@@ -27,6 +27,7 @@ RUN apt-get update -q \
        nodejs \
        yarn \
        net-tools \
+       iproute2 \
     && apt-get install -y google-chrome-stable --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* && \
     set -x && \
