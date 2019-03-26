@@ -33,13 +33,6 @@ RUN apt-get update -q \
     useradd -s /bin/bash -m -d /home/rails -g rails rails && \
     chown rails:rails /app
 
-# Copy docker entry point
-COPY docker-entrypoint.sh /usr/local/bin/
-
-# Make entrypoint executable when building on Windows
-# And backwards compatible entrypoint
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh
-
 # Continue as rails user
 USER rails
 
