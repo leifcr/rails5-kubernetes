@@ -13,6 +13,8 @@ case "$1" in
         command="bundle exec $@";;
         spork|spring|strainer|tailor|taps|thin|thor|unicorn|unicorn_rails|webpacker|yarn)
         command="bundle exec $@";;
+        ./bin/webpack-dev-server|bin/webpack-dev-server|./bin/webpack|bin/webpack)
+        command="bundle exec $@";;
         "")
         command="bundle exec rails server";;
         *)
