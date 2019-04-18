@@ -7,7 +7,6 @@ gem 'rails', '~> 5.2.0'
 gem "lograge"
 
 gem 'sprockets'
-gem 'sprockets-es6', require: 'sprockets/es6'
 
 gem 'responders' # See https://github.com/plataformatec/responders
 
@@ -16,15 +15,12 @@ gem 'turbolinks'
 # Add after upgrade to rails5
 gem 'rails-i18n'
 
-# Might not be needed
-# gem 'quiet_assets'
-
-# kaminair must be before elasticsearch to work with es
+# kaminari must be before elasticsearch to work with es
 gem 'kaminari'
 
-gem 'elasticsearch', '~> 6.0' # Upgrade to 5.x (Can do 6.x as soon as elasticsearch-rails is 6.x compatible)
-gem 'elasticsearch-rails', '~> 6.0' # 5.x should be compatible with 6.x
-gem 'elasticsearch-model', '~> 6.0' # 5.x should be compatible with 6.x # rubocop:disable Bundler/OrderedGems
+gem 'elasticsearch', '~> 6.0'
+gem 'elasticsearch-rails', '~> 6.0'
+gem 'elasticsearch-model', '~> 6.0' # rubocop:disable Bundler/OrderedGems
 gem 'elasticsearch-dsl' # rubocop:disable Bundler/OrderedGems
 
 # Nice progressbar to use in rake tasks
@@ -39,16 +35,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml' # Until 5.0.3 has been released with https://github.com/haml/haml/pull/952 included
 gem 'haml-rails'
 
-# gem 'bcrypt', '~> 3.1.7'
-
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-
-gem 'jquery.fileupload-rails'
-
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3'
-# gem 'font-awesome-sass', '~> 4.3'
+# gem 'bootstrap-sass', '~> 3.3'
+gem 'bootstrap'
+
+# To include the icon helper.
+gem 'font-awesome-sass', '~> 5.8'
 gem 'sassc-rails' #, '~> 5.0'
 
 gem 'mini_magick'
@@ -60,41 +52,34 @@ gem 'leifcr-refile', require: 'refile/rails' # Use leifcr-refile until new versi
 gem 'leifcr-refile-fog'
 gem 'leifcr-refile-mini_magick', require: 'refile/mini_magick'
 
-# gem 'paperclip'
-# gem 'paperclip-optimizer', '~> 2.0.0'
-# gem 'image_optim', '~> 0.20'
-# gem 'image_optim_pack'
-# gem 'delayed_paperclip'
-
 gem 'carrierwave'
 
 gem 'interactor-rails', '~> 2.0'
 
-# For CC payments using checkout.js
+# For CC payments
 gem 'stripe'
 
-# For sending public stripe token to js from secrets.yml
+# For sending public stripe token to js
 gem 'gon'
 
 # For states: https://github.com/gocardless/statesman
 gem 'statesman'
 
 # For unique id's on orders, carts etc, since integers can be easily found
-# gem 'activeuuid'
-# gem 'leifcr-activeuuid', require: 'activeuuid'
-# Use this instead for uuid
 gem 'mysql-binuuid-rails'
-# gem 'uuidtools'
 
-# CSP setup/reporting
-gem 'secure_headers'
+# CSP setup/reporting, (rails 5.2+ has this included)
+# gem 'secure_headers'
 
 # Asset precompilation
-# Can be removed if webpack is used instead
-gem 'uglifier', '>= 1.3.0'
+# Using webpacker for js
+gem 'webpacker', '~> 4.0'
+
+# Add if asset js is used instead of webpacker
+# gem 'uglifier', '>= 1.3.0'
 # uglifier requirement
-gem 'execjs'
-gem 'mini_racer'
+# gem 'execjs'
+# gem 'mini_racer'
 # gem 'therubyracer' # , group: [:development] # execjs/uglifier requirement
 
 # Error Tracking
@@ -112,7 +97,8 @@ gem 'puma'
 # gem 'delayed_job_active_record'
 
 gem 'sidekiq'
-gem 'sidekiq_alive'
+gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', tag: 'v1.1.5'
+# gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', branch: 'testing_stuff'
 
 # Forms
 gem 'simple_form', '~> 4.0'
@@ -144,7 +130,6 @@ gem 'sitemap_generator'
 group :development, :test do
   gem 'rspec-rails', '~> 3.8' # , group: [:development, :test]
   gem 'rspec-retry'
-  # gem 'rspec-collection_matchers'
   gem 'faker'
   # gem 'thin'
   gem 'factory_bot_rails' # , require: false # , group: [:test]
@@ -156,7 +141,6 @@ group :test do
 
   gem 'capybara-screenshot'
 
-  # gem 'shoulda-matchers'
   gem 'timecop'
 
   gem 'capybara-selenium'
@@ -167,7 +151,7 @@ group :test do
   gem 'rails-controller-testing'
 
   # Alternative: change to https://github.com/elgalu/docker-selenium
-  # For using real chrome/ff browsers through sxelenium
+  # For using real chrome/ff browsers through selenium
 
   # Coverage
   # gem 'simplecov', require: false
@@ -177,16 +161,15 @@ group :test do
   gem 'ruby_gntp'
 end
 
+# Nesting
 gem 'awesome_nested_set'
 
-# Ordering various models
+# Ordering
 
 gem 'ranked-model'
 
-# NOTE: slugs from friendly_id should be saved in history with paper_trail
+# NOTE: slugs from friendly_id must be saved in history with paper_trail, or stored in separate table to allow historical routing
 gem 'friendly_id'
-
-gem 'momentjs-rails'
 
 gem 'hashie' # used by content on json data
 gem 'hashie-forbidden_attributes' # To fix strong params issue
@@ -207,20 +190,6 @@ gem 'valid_email2'
 
 # For publish/draft/versining, paper_trail is used
 gem 'paper_trail'
-
-# Prettier alerts
-# TODO:
-# Change to this to include confirm method for rails.confirm ujs
-# Change to use https://github.com/alencarandre/sweet-alert2-rails-confirm
-gem 'sweet-alert-confirm'
-
-# Better lightboxes
-# For galleries, use magnific-popup in combination with slick slider
-# For single images, videos, logins etc, use magnific-popup
-gem 'magnific-popup-rails'
-
-# Clipboard if needed
-gem 'clipboard-rails'
 
 # Caching in memcached through dalli
 gem 'dalli'
@@ -250,14 +219,10 @@ group :development do
 
   gem 'i18n-tasks' # To check for missing/unused translations
 
-  #  gem 'rails-dev-tweaks', '~> 0.5.1'
-
   # Note, remove binding_of_caller and/or better_errors if debugging is slow
   # See https://github.com/charliesome/better_errors/issues/341
   gem 'better_errors'
   gem 'binding_of_caller'
-  # This gem fixes puma issue temporarly
-  # gem 'debug-extras'
 
   gem 'nokogiri' # Needed for data-import.
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -268,7 +233,6 @@ group :development do
   # For reloading during devel
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
-  # gem 'leifcr-rack-livereload', require: 'rack-livereload'
 
   gem 'thor'
 
@@ -290,3 +254,6 @@ group :development do
   gem 'pry-byebug'
 end
 
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-animate.css'
+# end
