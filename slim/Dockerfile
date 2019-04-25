@@ -18,6 +18,7 @@ RUN apt-get update -q \
        default-libmysqlclient-dev \
        libxml2-dev \
        libxslt1-dev \
+       git \
        ghostscript \
        mysql-client \
        wget \
