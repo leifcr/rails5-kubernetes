@@ -88,10 +88,11 @@ gem 'sentry-raven'
 group :staging, :production do
   # Profiler
   gem 'skylight'
+  # Use to passenger for serving static assets
+  # For using puma in production, the rails deployment package must include
+  # a 'sidekart nginx' to serve static assets, or you must include
+  gem 'passenger', require: 'phusion_passenger/rack_handler'
 end
-
-# Use puma as the web server
-gem 'puma'
 
 # gem 'delayed_job'
 # gem 'delayed_job_active_record'
@@ -131,6 +132,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8' # , group: [:development, :test]
   gem 'rspec-retry'
   gem 'faker'
+  gem 'puma'
   # gem 'thin'
   gem 'factory_bot_rails' # , require: false # , group: [:test]
 end
