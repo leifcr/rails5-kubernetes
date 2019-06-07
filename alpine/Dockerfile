@@ -24,8 +24,8 @@ RUN apk add --update --no-cache \
   rm -rf /var/cache/apk/* && \
   set -x && \
   mkdir $APP_HOME && \
-  addgroup -g 1000 rails && \
-  adduser -D -s /bin/sh -u 1000 -h /home/rails -G rails rails && \
+  addgroup -g 1001 rails && \
+  adduser -D -s /bin/sh -u 1001 -h /home/rails -G rails rails && \
   chown rails:rails /app
 
 # Copy docker entry point

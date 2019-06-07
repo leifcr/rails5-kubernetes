@@ -33,8 +33,8 @@ RUN apt-get update -q \
     && rm -rf /var/lib/apt/lists/* && \
     set -x && \
     mkdir $APP_HOME && \
-    groupadd -g 1000 rails && \
-    useradd -s /bin/bash -m -d /home/rails -g rails rails && \
+    groupadd -g 1001 rails && \
+    useradd -s /bin/bash -m -d /home/rails --uid 1001 -g rails rails && \
     chown rails:rails /app
 
 # Copy docker entry point
