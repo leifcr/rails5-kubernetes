@@ -3,8 +3,11 @@ source 'https://rubygems.org'
 gem 'bootsnap', require: false
 gem 'rails', '~> 5.2.0'
 
+# Lock to 1.0.4 until rails 5.2.4 is released, or upgrade to 6.0
+gem 'rails-html-sanitizer', '~> 1.0.4'
+
 # Better logging
-gem "lograge"
+gem 'lograge'
 
 gem 'sprockets'
 
@@ -45,10 +48,9 @@ gem 'sassc-rails' #, '~> 5.0'
 
 gem 'mini_magick'
 
-gem 'fog-rackspace'
-# gem 'refile', require: 'refile/rails'
+gem 'fog-aws' # , require: false
+# gem 'fog-rackspace' # , require: false
 gem 'leifcr-refile', require: 'refile/rails' # Use leifcr-refile until new version is released
-# gem 'refile-mini_magick'
 gem 'leifcr-refile-fog'
 gem 'leifcr-refile-mini_magick', require: 'refile/mini_magick'
 
@@ -87,7 +89,9 @@ gem 'sentry-raven'
 
 group :staging, :production do
   # Profiler
-  gem 'skylight'
+  # Note: Cannot use skylight in production, as it cannot filter out kubernetes alive checks
+  # gem 'skylight'
+
   # Use to passenger for serving static assets
   # For using puma in production, the rails deployment package must include
   # a 'sidekart nginx' to serve static assets, or you must include
@@ -238,12 +242,6 @@ group :development do
 
   gem 'thor'
 
-  # Cannot use guard-bundler on Windows, because of symlink issue.
-  # gem 'guard-bundler', require: false
-  # Cannot use guard-foreman on Windows, because of symlink issue.
-  # gem 'guard-foreman', require: false
-  # gem 'foreman', require: false
-
   # Annotate all the models :)
   gem 'annotate', require: false
 
@@ -255,7 +253,3 @@ group :development do
   gem 'pry-toys'
   gem 'pry-byebug'
 end
-
-# source 'https://rails-assets.org' do
-#   gem 'rails-assets-animate.css'
-# end
