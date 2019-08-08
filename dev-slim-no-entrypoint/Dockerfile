@@ -22,7 +22,7 @@ RUN apt-get update -q \
        libxslt1-dev \
        git \
        ghostscript \
-       mysql-client \
+       default-mysql-client \
        wget \
        curl \
        nodejs \
