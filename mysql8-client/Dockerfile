@@ -5,11 +5,8 @@ LABEL description='Image for running rails 5 apps on kubernetes with mysql-8 cli
 ENV APP_HOME /app
 ENV LANG C.UTF-8
 
-# Must run alone as it fails a lot
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 5072E1F5
 
-# For stretch:
-# RUN  apt-get install -y apt-transport-https ca-certificates gnupg wget --no-install-recommends && \
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
