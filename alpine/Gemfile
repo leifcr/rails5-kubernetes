@@ -106,7 +106,7 @@ gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', tag: 'v
 # gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', branch: 'testing_stuff'
 
 # Forms
-gem 'simple_form', '~> 4.0'
+gem 'simple_form', '~> 5.0'
 gem 'country_select' # rubocop:disable Bundler/OrderedGems - countries must be after country_select
 gem 'countries' # rubocop:disable Bundler/OrderedGems
 
