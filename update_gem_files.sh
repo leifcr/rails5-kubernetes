@@ -7,4 +7,5 @@ cp -f Gemfile* ./dev-slim-no-entrypoint/
 cp -f Gemfile* ./alpine/
 cp -f Gemfile* ./slim/
 cp -f Gemfile* ./mysql8-client/
+cp -f Gemfile* ./dev-mysql8/
 # gc -m "Update gems"
