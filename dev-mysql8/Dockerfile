@@ -16,7 +16,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get update -q \
     && apt-get install -y \
        build-essential \
-       default-libmysqlclient-dev \
        libxml2-dev \
        libxslt1-dev \
        ghostscript \
