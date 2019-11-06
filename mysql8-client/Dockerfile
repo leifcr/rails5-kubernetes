@@ -20,6 +20,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
        libmysqlclient-dev \
        libmysqlclient21 \
        mysql-client \
+       postgresql-client \
        wget \
        curl \
        nodejs \

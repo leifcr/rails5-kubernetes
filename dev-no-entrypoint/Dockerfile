@@ -20,6 +20,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
        libxslt1-dev \
        ghostscript \
        default-mysql-client \
+       postgresql-client \
        wget \
        curl \
        nodejs \
