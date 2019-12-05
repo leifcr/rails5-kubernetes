@@ -102,8 +102,7 @@ end
 # gem 'delayed_job_active_record'
 
 gem 'sidekiq'
-gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', tag: 'v1.1.5'
-# gem 'sidekiq_alive', git: 'https://github.com/leifcr/sidekiq_alive.git', branch: 'testing_stuff'
+gem 'sidekiq_alive'
 
 # Forms
 gem 'simple_form', '~> 5.0'
