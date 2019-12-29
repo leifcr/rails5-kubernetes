@@ -14,7 +14,7 @@
     "corejs-typeahead": "^1.2.1",
     "form-serializer": "^2.5.0",
     "froala-editor": "2.9.5",
-    "handlebars": "^4.1.1",
+    "handlebars": "^4.3.0",
     "handlebars-helpers": "^0.10.0",
     "humps": "^2.0.1",
     "jbox": "^1.0",
