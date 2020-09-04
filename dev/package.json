@@ -14,7 +14,7 @@
     "corejs-typeahead": "^1.2.1",
     "dompurify": "^2.0.10",
     "form-serializer": "^2.5.0",
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.1.1",
     "handlebars-helpers": "^0.10.0",
     "humps": "^2.0.1",
     "jbox": "^1.0",
@@ -27,26 +27,26 @@
     "lodash": "^4.17.11",
     "magnific-popup": "^1.1.0",
     "moment": "^2.24.0",
-    "pnotify": "^5.1.0",
+    "pnotify": "^4.0.0-beta.2",
     "popper.js": "^1.14.7",
     "promise-polyfill": "^8.1.0",
     "qs": "^6.7.0",
     "rails-ujs": "^5.2.3",
     "safename": "^1.0.2",
     "script-loader": "^0.7.2",
-    "select2": "^4.0.6-rc.1",
-    "select2-theme-bootstrap4": "^0.2.0-beta.3",
+    "select2": "^4.0.13",
+    "select2-theme-bootstrap4": "^1.0.0",
     "slick-carousel": "^1.8.1",
-    "superagent": "^5.0.2",
-    "sweetalert2": "^9.13.0",
+    "superagent": "^6.1.0",
+    "sweetalert2": "^9.17.0",
     "tui-image-editor": "^3.9.0",
     "turbolinks": "^5.2.0",
     "underscore": "^1.9.1",
-    "uuid": "^8.1.0"
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^7.1.0",
+    "eslint": "^7.8.1",
     "webpack-dev-server": "^3.7.0"
   }
 }
