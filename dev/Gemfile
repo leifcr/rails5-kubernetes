@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 gem 'bootsnap', require: false
 gem 'rails', '~> 5.2.0'
 
-# Lock to 1.0.4 until rails 5.2.4 is released, or upgrade to 6.0
-gem 'rails-html-sanitizer', '~> 1.0.4'
+gem 'rails-html-sanitizer'
 
 # Better logging
 gem 'lograge'
@@ -132,7 +131,7 @@ gem 'pundit'
 gem 'sitemap_generator'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8' # , group: [:development, :test]
+  gem 'rspec-rails', '~> 4.0' # , group: [:development, :test]
   gem 'rspec-retry'
   gem 'faker'
   gem 'puma'
