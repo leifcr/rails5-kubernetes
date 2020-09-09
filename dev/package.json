@@ -14,7 +14,7 @@
     "corejs-typeahead": "^1.2.1",
     "dompurify": "^2.0.10",
     "form-serializer": "^2.5.0",
-    "handlebars": "^4.1.1",
+    "handlebars": "^4.7.0",
     "handlebars-helpers": "^0.10.0",
     "humps": "^2.0.1",
     "jbox": "^1.0",

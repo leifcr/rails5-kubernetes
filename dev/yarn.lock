@@ -4159,7 +4159,7 @@ handlebars-utils@^1.0.2, handlebars-utils@^1.0.4, handlebars-utils@^1.0.6:
     kind-of "^6.0.0"
     typeof-article "^0.1.1"
 
-handlebars@^4.0.11, handlebars@^4.1.1:
+handlebars@^4.0.11, handlebars@^4.7.0:
   version "4.7.6"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.6.tgz#d4c05c1baf90e9945f77aa68a7a219aa4a7df74e"
   integrity sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
