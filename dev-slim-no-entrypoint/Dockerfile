@@ -1,4 +1,4 @@
-FROM ruby:2.6-slim
+FROM ruby:2.7-slim
 LABEL maintainer='leifcr@gmail.com'
 LABEL description='Image for running rails 5 apps on kubernetes, with common gems preinstalled. Based on ruby:2.6 image'
 
