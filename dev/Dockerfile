@@ -48,7 +48,7 @@ WORKDIR $APP_HOME
 # Add Gemfile
 COPY --chown=rails:rails Gemfile Gemfile.lock update_webdrivers.rb ./
 # Install gems
-RUN gem install bundler --version 1.17.3 && bundle install --jobs 20 --retry 5 && bundle exec ruby update_webdrivers.rb && yarn install
+RUN gem install bundler && bundle install --jobs 20 --retry 5 && bundle exec ruby update_webdrivers.rb && yarn install
 
 # Set entry point to bundle exec, as all cmd's with rails should be prepended
 ENTRYPOINT ["docker-entrypoint.sh"]
