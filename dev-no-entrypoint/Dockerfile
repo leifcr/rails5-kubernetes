@@ -32,6 +32,9 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     useradd -s /bin/bash -m -d /home/rails --uid 1001 -g rails rails && \
     chown rails:rails /app
 
+# Copy Imagemagick policy to allow converting PDF to thumbnails
+COPY imagemagick_policy.xml /etc/ImageMagick-6/policy.xml
+
 # Continue as rails user
 USER rails
 
