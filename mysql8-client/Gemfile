@@ -84,7 +84,8 @@ gem 'webpacker', '~> 5.0'
 # gem 'therubyracer' # , group: [:development] # execjs/uglifier requirement
 
 # Error Tracking
-gem 'sentry-raven'
+# gem 'sentry-raven'
+gem 'rollbar'
 
 group :staging, :production do
   # Profiler
