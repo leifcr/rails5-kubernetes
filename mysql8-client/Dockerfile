@@ -25,6 +25,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
        curl \
        nodejs \
        yarn \
+       cargo \
     && set -x && \
     mkdir $APP_HOME && \
     groupadd -g 1001 rails && \

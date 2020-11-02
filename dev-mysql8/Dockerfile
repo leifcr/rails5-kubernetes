@@ -27,6 +27,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
        curl \
        nodejs \
        yarn \
+       cargo \
     && apt-get install -y google-chrome-stable --no-install-recommends \
     && set -x && \
     mkdir $APP_HOME && \

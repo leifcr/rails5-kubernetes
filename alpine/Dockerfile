@@ -20,6 +20,7 @@ RUN apk add --update --no-cache \
   shadow \
   tzdata \
   git \
+  cargo \
   yarn && \
   rm -rf /var/cache/apk/* && \
   set -x && \

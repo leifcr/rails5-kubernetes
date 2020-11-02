@@ -25,6 +25,7 @@ RUN apt-get update -q \
        curl \
        nodejs \
        yarn \
+       cargo \
     && rm -rf /var/lib/apt/lists/* && \
     set -x && \
     mkdir $APP_HOME && \
