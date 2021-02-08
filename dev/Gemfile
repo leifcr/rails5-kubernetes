@@ -120,7 +120,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
 
 # For accessing google apis (YouTube etc)
-gem 'google-api-client'
+# Depracted: use specific api libraries instead
+# gem 'google-api-client'
 
 # Authorization
 gem 'pundit'
