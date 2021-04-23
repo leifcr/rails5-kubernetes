@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@rails/webpacker": "^5.1.0",
-    "@sentry/browser": "^5.1.1",
     "accounting": "^0.4.1",
     "blueimp-file-upload": "^10.13.0",
     "bootstrap": "^4.4.1",
