@@ -11,7 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && echo "deb http://repo.mysql.com/apt/debian/ buster mysql-8.0" | tee /etc/apt/sources.list.d/mysqlclient.list \
-    && apt-get update -q \
+    && apt-get update -q && apt-get upgrade -y \
     && apt-get install -y \
        build-essential \
        libxml2-dev \

@@ -13,7 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://repo.mysql.com/apt/debian/ buster mysql-8.0" | tee /etc/apt/sources.list.d/mysqlclient.list \
     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
-    && apt-get update -q \
+    && apt-get update -q && apt-get upgrade -y \
     && apt-get install -y \
        build-essential \
        libxml2-dev \
