@@ -37,6 +37,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -70,7 +73,7 @@ jobs:
         with:
           push: true
           tags: leifcr/rails5-kubernetes:latest-mysql8-client
-          context: ./mysql8/
+          context: ./mysql8-client/
       -
         name: Build and push (dev mysql8 client)
         id: docker_build_dev_mysql8_client
