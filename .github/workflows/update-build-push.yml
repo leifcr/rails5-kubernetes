@@ -62,7 +62,7 @@ jobs:
         with:
           push: true
           tags: leifcr/rails5-kubernetes:latest-dev
-          file: ./dev/Dockerfile
+          context: ./dev/
       -
         name: Build and push (latest mysql8 client)
         id: docker_build_latest_mysql8_client
@@ -70,7 +70,7 @@ jobs:
         with:
           push: true
           tags: leifcr/rails5-kubernetes:latest-mysql8-client
-          file: ./mysql8/Dockerfile
+          context: ./mysql8/
       -
         name: Build and push (dev mysql8 client)
         id: docker_build_dev_mysql8_client
@@ -78,7 +78,7 @@ jobs:
         with:
           push: true
           tags: leifcr/rails5-kubernetes:dev-mysql8-client
-          file: ./dev-mysql8/Dockerfile
+          context: ./dev-mysql8/
       -
         name: Build and push (no entry point)
         id: docker_build_no_entry_point
@@ -86,4 +86,4 @@ jobs:
         with:
           push: true
           tags: leifcr/rails5-kubernetes:latest-dev-no-entrypoint
-          file: ./dev-no-entry-point/Dockerfile
+          context: ./dev-no-entry-point/
