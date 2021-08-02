@@ -1,0 +1,89 @@
+on: push
+jobs:
+  # update_packages:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: '2.7'
+  #         bundler-cache: true
+  #     -
+  #       name: Bundle update
+  #       run: bundle update
+  #     -
+  #       name: Update yarn
+  #       working-directory: ./dev
+  #       run: yarn upgrade
+  #     -
+  #       name: Update all package files
+  #       run: ./copy_package_files.sh
+  #     -
+  #       name: Bundle outdated
+  #       run: bundle outdated --strict
+  #       continue-on-error: true
+  #     -
+  #       name: Yarn outdated
+  #       working-directory: ./dev
+  #       run: yarn outdated
+  #       continue-on-error: true
+  #     -
+  #       name: Add and Commit
+  #       uses: EndBug/add-and-commit@v7
+  #       with:
+  #         default_author: github_actions
+  docker:
+    # needs: update_packages
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push (Latest)
+        id: docker_build_latest
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails6-kubernetes:latest
+      -
+        name: Build and push (Latest dev)
+        id: docker_build_latest_dev
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails6-kubernetes:latest-dev
+          file: ./dev/Dockerfile
+      -
+        name: Build and push (latest mysql8 client)
+        id: docker_build_latest_mysql8_client
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails6-kubernetes:latest-mysql8-client
+          file: ./mysql8/Dockerfile
+      -
+        name: Build and push (dev mysql8 client)
+        id: docker_build_dev_mysql8_client
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails6-kubernetes:dev-mysql8-client
+          file: ./dev-mysql8/Dockerfile
+      -
+        name: Build and push (no entry point)
+        id: docker_build_no_entry_point
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails6-kubernetes:latest-dev-no-entrypoint
+          file: ./dev-no-entry-point/Dockerfile
