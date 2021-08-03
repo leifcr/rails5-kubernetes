@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'dev/**'
+  workflow_dispatch:
 jobs:
   docker-latest-dev:
     # needs: update_packages

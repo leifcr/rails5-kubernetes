@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'mysql8-client/**'
+  workflow_dispatch:
 jobs:
   docker-mysql8:
     runs-on: ubuntu-latest

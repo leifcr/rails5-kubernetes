@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'dev-mysql8/**'
+  workflow_dispatch:
 jobs:
   docker-dev-mysql8:
     runs-on: ubuntu-latest

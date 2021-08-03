@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'dev-no-entrypoint/**'
+  workflow_dispatch:
 jobs:
   docker-no-entrypoint:
     runs-on: ubuntu-latest

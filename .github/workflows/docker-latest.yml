@@ -5,6 +5,7 @@ on:
       - Gemfile.lock
       - docker-entrypoint.sh
       - update_webdrivers.rb
+  workflow_dispatch:
 jobs:
   docker-latest:
     runs-on: ubuntu-latest
