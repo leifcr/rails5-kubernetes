@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    paths:
+      - 'dev-no-entrypoint/**'
 jobs:
   docker-no-entrypoint:
     runs-on: ubuntu-latest

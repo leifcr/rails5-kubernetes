@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    paths:
+      - 'mysql8-client/**'
 jobs:
   docker-mysql8:
     runs-on: ubuntu-latest

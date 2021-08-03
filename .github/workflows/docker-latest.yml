@@ -1,4 +1,10 @@
-on: push
+on:
+  push:
+    paths:
+      - Gemfile
+      - Gemfile.lock
+      - docker-entrypoint.sh
+      - update_webdrivers.rb
 jobs:
   docker-latest:
     runs-on: ubuntu-latest
