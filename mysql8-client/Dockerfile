@@ -5,7 +5,7 @@ LABEL description='Image for running rails 5 apps on kubernetes with mysql-8 cli
 ENV APP_HOME /app
 ENV LANG C.UTF-8
 
-RUN apt-key adv --keyserver pgp.ubuntu.com --recv-keys 5072E1F5
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5072E1F5
 # RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \
