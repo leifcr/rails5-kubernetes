@@ -390,7 +390,7 @@ GEM
     pry-toys (0.0.2)
       pry
     public_suffix (4.0.6)
-    puma (5.5.0)
+    puma (5.5.1)
       nio4r (~> 2.0)
     pundit (2.1.1)
       activesupport (>= 3.0.0)
