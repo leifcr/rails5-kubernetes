@@ -9,6 +9,12 @@ cp -f Gemfile* ./alpine/
 cp -f Gemfile* ./slim/
 cp -f Gemfile* ./mysql8-client/
 cp -f Gemfile* ./dev-mysql8/
+
+cd mysql8-client-min
+bundle update
+cd ..
+cp -f mysql8-client-min/Gemfile* ./docker-no-entry-point-min/
+
 cd dev
 yarn upgrade
 cp yarn.lock ../dev-no-entrypoint/
@@ -16,7 +22,3 @@ cp yarn.lock ../dev-mysql8/
 yarn outdated
 cd ..
 bundle outdated --strict
-# gc -m "Update gems"
-cd mysql8-client-min
-bundle update
-cd ..
