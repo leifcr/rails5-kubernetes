@@ -1,0 +1,32 @@
+on:
+  push:
+    paths:
+      - 'mysql8-client-min/**'
+  workflow_dispatch:
+jobs:
+  docker-mysql8-min:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push (latest mysql8 client - minimal)
+        id: docker_build_latest_mysql8_client_min
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: leifcr/rails5-kubernetes:latest-mysql8-client-min
+          context: ./mysql8-client-min/

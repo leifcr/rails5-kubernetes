@@ -17,3 +17,6 @@ yarn outdated
 cd ..
 bundle outdated --strict
 # gc -m "Update gems"
+cd mysql8-client-min
+bundle update
+cd ..
