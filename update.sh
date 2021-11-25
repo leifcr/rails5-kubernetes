@@ -13,7 +13,7 @@ cp -f Gemfile* ./dev-mysql8/
 cd mysql8-client-min
 bundle update
 cd ..
-cp -f mysql8-client-min/Gemfile* ./docker-no-entry-point-min/
+cp -f mysql8-client-min/Gemfile* ./dev-no-entrypoint-min/
 
 cd dev
 yarn upgrade
