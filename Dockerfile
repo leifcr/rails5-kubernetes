@@ -1,5 +1,5 @@
 FROM ruby:2.7
-LABEL maintainer='leifcr@gmail.com'
+LABEL org.opencontainers.image.authors='leifcr@gmail.com'
 LABEL description='Image for running rails 5 apps on kubernetes, with common gems preinstalled. Based on ruby:2.6 image'
 
 ENV APP_HOME /app
