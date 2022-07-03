@@ -5,13 +5,13 @@ LABEL description='Image for running rails 5 apps on kubernetes with mysql-8 cli
 ENV APP_HOME /app
 ENV LANG C.UTF-8
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5072E1F5
-# RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3A79BD29
+# RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 3A79BD29
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-    && echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && echo "deb http://repo.mysql.com/apt/debian/ buster mysql-8.0" | tee /etc/apt/sources.list.d/mysqlclient.list \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && echo "deb https://repo.mysql.com/apt/debian/ buster mysql-8.0" | tee /etc/apt/sources.list.d/mysqlclient.list \
     && apt-get update -q && apt-get upgrade -y \
     && apt-get install -y \
        build-essential \
