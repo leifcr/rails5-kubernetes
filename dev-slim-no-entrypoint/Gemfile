@@ -12,21 +12,11 @@ gem 'sprockets'
 
 gem 'responders' # See https://github.com/plataformatec/responders
 
-gem 'turbolinks'
-
-# Add after upgrade to rails5
+# i18n
 gem 'rails-i18n'
 
 # kaminari must be before elasticsearch to work with es
 gem 'kaminari'
-
-gem 'elasticsearch', '~> 6.0'
-gem 'elasticsearch-rails', '~> 6.0'
-gem 'elasticsearch-model', '~> 6.0' # rubocop:disable Bundler/OrderedGems
-gem 'elasticsearch-dsl' # rubocop:disable Bundler/OrderedGems
-
-# Nice progressbar to use in rake tasks
-gem 'ruby-progressbar', require: false
 
 # Pin to 0.4 for rails 4.x
 # Change to 0.5.x upgrade to rails 5.x
@@ -46,25 +36,6 @@ gem 'font-awesome-sass', '~> 5.8'
 gem 'sassc-rails' #, '~> 5.0'
 
 gem 'mini_magick'
-
-gem 'fog-aws' # , require: false
-# gem 'fog-rackspace' # , require: false
-gem 'leifcr-refile', require: 'refile/rails' # Use leifcr-refile until new version is released
-gem 'leifcr-refile-fog'
-gem 'leifcr-refile-mini_magick', require: 'refile/mini_magick'
-
-gem 'carrierwave'
-
-gem 'interactor-rails', '~> 2.0'
-
-# For CC payments
-gem 'stripe'
-
-# For sending public stripe token to js
-gem 'gon'
-
-# For states: https://github.com/gocardless/statesman
-gem 'statesman'
 
 # For unique id's on orders, carts etc, since integers can be easily found
 gem 'mysql-binuuid-rails'
@@ -109,28 +80,18 @@ gem 'simple_form', '~> 5.0'
 gem 'country_select' # rubocop:disable Bundler/OrderedGems - countries must be after country_select
 gem 'countries' # rubocop:disable Bundler/OrderedGems
 
+gem 'cancancan'
+
 # Authentication
 gem 'devise'
 gem 'devise-i18n'
-
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-github'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-linkedin-oauth2'
 
 # For accessing google apis (YouTube etc)
 # Depracted: use specific api libraries instead
 # gem 'google-api-client'
 
-# Authorization
-gem 'pundit'
-
 # For simple search, ransack can be used
 # gem 'ransack'
-
-# For sitemaps
-gem 'sitemap_generator'
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0' # , group: [:development, :test]
@@ -167,56 +128,12 @@ group :test do
   gem 'ruby_gntp'
 end
 
-# Nesting
-gem 'awesome_nested_set'
-
-# Ordering
-
-gem 'ranked-model'
-
-# NOTE: slugs from friendly_id must be saved in history with paper_trail, or stored in separate table to allow historical routing
-gem 'friendly_id'
-
-gem 'hashie' # used by content on json data
-gem 'hashie-forbidden_attributes' # To fix strong params issue
-# Alternative: use virtus models instead of hashie serialized cols
-# gem 'virtus'
-
-# For inlining css on emails (gmail + others remove css styles...)
-gem 'inky-rb', require: 'inky'
-gem 'premailer-rails'
-
-gem 'terminal-table'
-
-# For truncating/word_wrapping tables. (Facets has a lot of ruby extension goodies...)
-gem 'facets', require: false
-
 # For validating email addresses
 gem 'valid_email2'
-
-# For publish/draft/versining, paper_trail is used
-gem 'paper_trail'
-
-# Caching in memcached through dalli
-gem 'dalli'
 
 # Connection pooling for dalli/puma, when running multi threaded:
 # See https://github.com/petergoldstein/dalli#multithreading-and-rails
 gem 'connection_pool'
-
-# Use Faraday for requests?
-gem 'excon'   # for using excon faraday adapter
-gem 'faraday' # do http requests over tons of adapters...
-
-gem 'enumerize'
-
-# For prettier pagination in urls
-gem 'routing-filter'
-
-# For truncating html
-gem 'truncate_html'
-
-gem 'slack-ruby-client'
 
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
