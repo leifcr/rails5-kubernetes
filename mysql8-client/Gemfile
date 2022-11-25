@@ -72,7 +72,7 @@ end
 # gem 'delayed_job'
 # gem 'delayed_job_active_record'
 
-gem 'sidekiq'
+gem 'sidekiq', '< 7.0'
 gem 'sidekiq_alive'
 
 # Forms
